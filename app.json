@@ -3,7 +3,7 @@
     "name": "Some_fabulous_persons",
     "slug": "Some_fabulous_persons",
     "version": "1.0.0",
-    "orientation": "portrait",
+    "orientation": "default",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
