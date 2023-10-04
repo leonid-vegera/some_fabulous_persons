@@ -1,9 +1,9 @@
 import { View, Image, Text, Platform, StyleSheet, useWindowDimensions, ImageBackground } from 'react-native';
-import ballImage from '../assets/ball.png';
+import ballImage from '../assets/images/ball.png';
 
 export const PersonCard = ({ name, image, position, championYears, cupYears, scores, performanceYears }) => {
   const windowWidth = useWindowDimensions().width;
-  const ballImage = require('../assets/ball.png');
+  const ballImage = require('../assets/images/ball.png');
   return (
     <View
       style={[styles.card,
@@ -19,29 +19,43 @@ export const PersonCard = ({ name, image, position, championYears, cupYears, sco
       <Image
         source={image}
         style={styles.image}
-        resizeMode='contain'
+        resizeMode='cover'
         accessibilityLabel={`${name} player`}
       />
 
-      <View style={styles.scores}>
-        <Image
-          source={ballImage}
-          style={[styles.scoresImage, {right: windowWidth > 500 ? 120 : 40}]}
-          resizeMode='contain'
-        />
-        <View style={[styles.scoresTextWrapper, {right: windowWidth > 500 ? 130 : 50}]}>
-          <Text style={styles.scoresText}>{scores}</Text>
-        </View>
-      </View>
+      {/*<View style={styles.scores}>*/}
+      {/*  <Image*/}
+      {/*    source={ballImage}*/}
+      {/*    style={[styles.scoresImage, {right: windowWidth > 500 ? 120 : 40}]}*/}
+      {/*    resizeMode='contain'*/}
+      {/*  />*/}
+      {/*  <View style={[styles.scoresTextWrapper, {right: windowWidth > 500 ? 130 : 50}]}>*/}
+      {/*    <Text style={styles.scoresText}>{scores}</Text>*/}
+      {/*  </View>*/}
+      {/*</View>*/}
 
-      <View style={styles.descriptionContainer}>
-        <Text style={styles.description}>Years of performance: {performanceYears.join(' - ')}</Text>
-      </View>
-      <View style={styles.descriptionContainer}>
-        <Text style={styles.description}>🏅Champion years: {championYears.join(', ')}</Text>
-      </View>
-      <View style={styles.descriptionContainer}>
-        <Text style={styles.description}>🏆Cup winner years: {cupYears.join(', ')}</Text>
+      <View>
+        <View style={styles.descriptionContainer}>
+          <Text style={styles.description}>Years of performance: {performanceYears.join(' - ')}</Text>
+        </View>
+        <View style={styles.descriptionContainer}>
+          <Text style={styles.description}>🏅Champion years: {championYears.join(', ')}</Text>
+        </View>
+        <View style={styles.descriptionContainer}>
+          <Text style={styles.description}>🏆Cup winner years: {cupYears.join(', ')}</Text>
+        </View>
+
+        <View style={styles.scores}>
+          <Image
+            source={ballImage}
+            style={[styles.scoresImage, {right: windowWidth > 500 ? 120 : 40}]}
+            resizeMode='contain'
+          />
+          <View style={[styles.scoresTextWrapper, {right: windowWidth > 500 ? 130 : 50}]}>
+            <Text style={styles.scoresText}>{scores}</Text>
+          </View>
+        </View>
+
       </View>
     </View>
   )
@@ -79,24 +93,30 @@ const styles = StyleSheet.create({
   name: {
     fontSize: 30,
     fontWeight: 'bold',
+    flexWrap: 'wrap',
+    flexBasis: '70%',
+    flexShrink: 1,
+    textAlign: 'justify',
   },
   position: {
     fontSize: 22,
   },
   image: {
-    width: '100%',
+    width: 250,
     height: 350,
-    marginBottom: 25
+    marginBottom: 25,
+    alignSelf: 'center'
   },
   scores: {
     position: 'absolute',
-    top: 550,
+    // top: 550,
     right: -5,
+    // bottom: 40
   },
   scoresImage: {
     position: 'absolute',
     right: 40,
-    bottom: 110,
+    // bottom: 110,
     width: 90,
     height: 90,
     borderRadius: 50,
@@ -105,7 +125,7 @@ const styles = StyleSheet.create({
   },
   scoresTextWrapper: {
     position: 'absolute',
-    bottom: 130,
+    // bottom: 130,
     right: 50,
     width: 70,
     alignItems: 'center',
@@ -114,8 +134,8 @@ const styles = StyleSheet.create({
     fontSize: 40,
     fontWeight: 'bold',
     color: 'white',
-    textDecorationColor: 'yellow',
     textShadowColor: '#000000',
+    textShadowOffset: { width: -1, height: 1 },
     textShadowRadius: 10,
   },
   descriptionContainer: {
