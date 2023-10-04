@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, SafeAreaView, Platform, ScrollView, ImageBackground, StatusBar } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, ScrollView, ImageBackground, StatusBar } from 'react-native';
 import { PersonCard } from './components/PersonCard';
 import {personData} from './assets/data/data';
 

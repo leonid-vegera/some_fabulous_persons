@@ -1,5 +1,4 @@
-import { View, Image, Text, Platform, StyleSheet, useWindowDimensions, ImageBackground } from 'react-native';
-import ballImage from '../assets/images/ball.png';
+import { View, Image, Text, Platform, StyleSheet, useWindowDimensions } from 'react-native';
 
 export const PersonCard = ({ name, image, position, championYears, cupYears, scores, performanceYears }) => {
   const windowWidth = useWindowDimensions().width;
@@ -23,17 +22,6 @@ export const PersonCard = ({ name, image, position, championYears, cupYears, sco
         accessibilityLabel={`${name} player`}
       />
 
-      {/*<View style={styles.scores}>*/}
-      {/*  <Image*/}
-      {/*    source={ballImage}*/}
-      {/*    style={[styles.scoresImage, {right: windowWidth > 500 ? 120 : 40}]}*/}
-      {/*    resizeMode='contain'*/}
-      {/*  />*/}
-      {/*  <View style={[styles.scoresTextWrapper, {right: windowWidth > 500 ? 130 : 50}]}>*/}
-      {/*    <Text style={styles.scoresText}>{scores}</Text>*/}
-      {/*  </View>*/}
-      {/*</View>*/}
-
       <View>
         <View style={styles.descriptionContainer}>
           <Text style={styles.description}>Years of performance: {performanceYears.join(' - ')}</Text>
@@ -45,7 +33,7 @@ export const PersonCard = ({ name, image, position, championYears, cupYears, sco
           <Text style={styles.description}>🏆Cup winner years: {cupYears.join(', ')}</Text>
         </View>
 
-        <View style={styles.scores}>
+        <View style={[styles.scores, {right: windowWidth > 500 ? -40 : -10}]}>
           <Image
             source={ballImage}
             style={[styles.scoresImage, {right: windowWidth > 500 ? 120 : 40}]}
@@ -109,14 +97,10 @@ const styles = StyleSheet.create({
   },
   scores: {
     position: 'absolute',
-    // top: 550,
-    right: -5,
-    // bottom: 40
+    top: -110
   },
   scoresImage: {
     position: 'absolute',
-    right: 40,
-    // bottom: 110,
     width: 90,
     height: 90,
     borderRadius: 50,
@@ -125,8 +109,7 @@ const styles = StyleSheet.create({
   },
   scoresTextWrapper: {
     position: 'absolute',
-    // bottom: 130,
-    right: 50,
+    top: 15,
     width: 70,
     alignItems: 'center',
   },
